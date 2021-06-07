@@ -1,38 +1,70 @@
 const router = require("express").Router();
-const Post = require("../models/postModel")
+const User = require("../models/userModel");
+const bcrypt = require('bcrypt');
+const isAuth = require("./authHelper");
 
-router.get("/test", (req, res) => {
-    res.json({"message": "works"})
-});
 
-router.post("/", async (req, res) => {
-    const {title, author, content} = req.body
-    console.log(title, author, content);
+router.post("/signup", async (req, res) => {
+    const {name, email, password, invite} = req.body
 
-    const newPost = new Post({
-        title,
-        author,
-        content
-    });
+    if(!name || !email || !password) return res.status(400).end("Bad Request");
 
+    // see if user exists
     try {
-        const result = await newPost.save();
-        res.json(result)
+        let query = await User.findOne({email:email}).exec()
+        if (query) return res.status(409).end(query.email + " is already registerd");
+
+        const hash = await bcrypt.hash(password, 10);
+
+        const newUser = new User({
+            name,
+            email,
+            hash,
+        })
+
+        query = await newUser.save()
+        // req.session.name = name;
+        // req.session.email = email;
+
+        res.json({name:name, email:email });
+
     } catch (err) {
-        res.status(500).end("Internal Server Error")
+        console.log(err);
+        res.status(500).end("Unexpected Error");
     }
 
-
-    res.json("herher");
 });
 
-router.get("/", async (req, res) => {
-    const posts = await Post.find();
-    res.json(posts);
-})
+router.post("/signin", async(req, res) =>{
+    const {email, password} = req.body
 
-router.get("/:id", async (req, res) => {
-    const posts = await Post.findById(req.params.id);
-    res.json(posts);
-})
+    if(!email || !password) return res.status(400).end("Bad Request");
+
+    try{
+
+        const query = await User.findOne({email:email}).exec();
+        if (!query) return res.status(401).end("no such user")
+        const valid = await bcrypt.compare(password, query.hash);
+        if (!valid) return res.status(401).end("wrong password")
+
+        // req.session.name = query.name;
+        // req.session.email = query.email;
+        // console.log(req.session)
+
+        res.json({name:query.name, email:query.email})
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).end("Unexpected Error");
+    }
+    
+});
+
+router.post("/signout", isAuth, async(req, res) => {
+    const {email} = req.body
+    if(!email) return res.status(400).end("Bad Request");
+    // req.session.destroy()
+    return res.json("user " + email +" signed out")
+});
+
 module.exports = router;

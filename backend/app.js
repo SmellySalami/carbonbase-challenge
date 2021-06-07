@@ -8,15 +8,23 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // middleware
+app.use(cors());
 app.use(express.json());
-app.use(session({
-  secret:'carbonbase',
-}));
+// app.use(session({
+//   secret:'carbonbase',
+//   resave:false,
+//   saveUninitialized: true,
+//   cookie:{
+//     secure:'none',
+//     domain:'127.0.0.1:3000',
+//     maxAge: 365 * 24 * 60 * 60 * 1000,
+//   }
+// }));
 app.use((req, res, next) =>{
     console.log("HTTP request", req.method, req.url, req.body);
     next();
 });
-app.use(cors());
+
 
 // routes
 app.use("/post", require("./routes/postRoutes"));

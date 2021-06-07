@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
+    // console.log(req.session)
     const posts = await Post.find();
     res.json(posts);
 })

@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <Header currUser={currUser}/>
+      <Header currUser={currUser} setCurrUser={setCurrUser}/>
       <Switch>
         <Route exact path="/">
           <PostList/>
