@@ -31,6 +31,7 @@ app.use("/post", require("./routes/postRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/comment", require("./routes/commentRoutes"));
 app.use("/stats", require("./routes/statRoutes"));
+app.use("/invite", require("./routes/inviteRoutes"));
 
 // db connection
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser:true, useUnifiedTopology:true}, (err) =>{

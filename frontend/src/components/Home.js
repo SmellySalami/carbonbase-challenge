@@ -1,4 +1,5 @@
 import React from "react"
+import Invite from "./Invite";
 
 import PostForm from "./PostForm";
 import PostList from "./PostList";
@@ -17,7 +18,7 @@ function Home({currUser}){
           </div>
           <div className="side-bar">
               <Stats/>
-              <div>invite link (of the company)</div>
+              <Invite/>
           </div>
       
       </div>

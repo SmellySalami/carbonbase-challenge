@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/userModel");
+const Invite = require("../models/inviteModel");
 const bcrypt = require('bcrypt');
 const isAuth = require("./authHelper");
 
@@ -7,12 +8,15 @@ const isAuth = require("./authHelper");
 router.post("/signup", async (req, res) => {
     const {name, email, password, invite} = req.body
 
-    if(!name || !email || !password) return res.status(400).end("Bad Request");
+    if(!name || !email || !password || !invite) return res.status(400).end("Bad Request");
 
     // see if user exists
     try {
         let query = await User.findOne({email:email}).exec()
         if (query) return res.status(409).end(query.email + " is already registerd");
+
+        query = await Invite.find({code: invite}).exec()
+        if (query.length == 0) return res.status(404).end("Not invited :(");
 
         const hash = await bcrypt.hash(password, 10);
 

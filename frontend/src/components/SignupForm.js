@@ -33,7 +33,7 @@ function SignupForm(props) {
   return (
     <form className="signin-form" onSubmit={submitHandler}>
       <h2>Sign Up</h2>
-      {<div className="error">{error}</div>}
+      <div className="error">{error}</div>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="name" name="name" id="signup-name" 
