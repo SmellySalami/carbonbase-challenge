@@ -19,15 +19,11 @@ function Invite(){
   }, []);
 
   return (
-    <div>
-      {(inviteCode) ? (
-        <div>
-          <div>Invite your coworkers with: [ {inviteCode} ]</div>
-        </div>
-      ) : (
-        <div>Loading invitation.</div>
-      )}
-    </div>
+    (inviteCode) ? (
+      <div className="side-bar-item">Invite your coworkers with: [ {inviteCode} ]</div>
+    ) : (
+      <div>Loading invitation.</div>
+    )
   )
 }
 

@@ -5,6 +5,8 @@ import PostForm from "./PostForm";
 import PostList from "./PostList";
 import Stats from "./Stats";
 
+import "../styles/Home.css"
+
 function Home({currUser}){
 
   // TODO: refresh button for posts lol

@@ -3,11 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-function Header(props) {
+import '../styles/Header.css';
 
-  // useEffect(()=>{
-  //   console.log(props)
-  // });
+function Header(props) {
 
   const history = useHistory()
 
@@ -27,12 +25,13 @@ function Header(props) {
     }
   }
 
-
   return (
-    <div className="header">
-      <Link to="/" className="header-logo">
-        Carbonbase.earth
-      </Link>
+    <div className="carbon-header">
+      <div>
+        <Link to="/" className="header-logo">
+          Carbonbase.earth
+        </Link>
+      </div>
       <div className="header-user">
         { props.currUser ? (
           <>

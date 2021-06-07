@@ -1,14 +1,14 @@
-import './App.css';
 import {Switch, Route} from "react-router-dom";
 import {useState} from "react";
 
-import PostList from "./components/PostList";
 import Header from "./components/Header";
 import SigninForm from "./components/SigninForm";
 import SignupForm from "./components/SignupForm";
 import Home from "./components/Home";
-import Post from "./components/Post"
-;
+import Post from "./components/Post";
+
+import './App.css';
+
 function App() {
   const [currUser, setCurrUser] = useState(() => {
     return null;

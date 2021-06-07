@@ -1,0 +1,21 @@
+.home{
+    display: flex;
+    flex-direction: row;
+}
+
+.post-container {
+    flex:4;
+}
+
+.side-bar {
+    flex:1;
+    margin: 10px 10px 10px 10px;
+    font-size: large;
+    padding: 10px;
+}
+
+.side-bar-item {
+    background: #09ff005b;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+}

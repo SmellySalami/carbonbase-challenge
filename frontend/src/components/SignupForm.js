@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import "../styles/Form.css";
+
 function SignupForm(props) {
 
   const history = useHistory();
@@ -31,9 +33,9 @@ function SignupForm(props) {
   }
 
   return (
-    <form className="signin-form" onSubmit={submitHandler}>
-      <h2>Sign Up</h2>
-      <div className="error">{error}</div>
+    <form className="nice-form" onSubmit={submitHandler}>
+      <div class="form-group">Sign Up</div>
+      <div className="form-group">{error}</div>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="name" name="name" id="signup-name" 
@@ -62,7 +64,7 @@ function SignupForm(props) {
           value={details.invite}
         />
       </div>
-      <input type="submit" value="sign up"/>
+      <input className="form-group" type="submit" value="sign up"/>
     </form>
   )
   

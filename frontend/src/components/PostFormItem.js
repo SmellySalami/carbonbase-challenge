@@ -1,6 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+import "../styles/List.css"
+
 function Post(props){
 
   const history = useHistory()
@@ -11,7 +13,7 @@ function Post(props){
     console.log()
   }
   return(
-    <div id={props.id} onClick={onClickPost}>POST: {props.title}</div>
+    <div className="list-item" id={props.id} onClick={onClickPost}>POST: {props.title}</div>
   )
 }
   

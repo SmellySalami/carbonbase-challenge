@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import "../styles/Form.css"
+
 function PostForm({currUser}) {
 
   const history = useHistory()
@@ -33,7 +35,7 @@ function PostForm({currUser}) {
 
   return (
     <form className="post-form" onSubmit={submitHandler}>
-      <h2>New Post</h2>
+      <div className="form-group">New Post</div>
       <div className="form-group">
         <label htmlFor="title">Title:</label>
         <input type="text" name="title" id="new-post-title"
@@ -47,7 +49,7 @@ function PostForm({currUser}) {
           value={newPostInfo.content}
         />
       </div>
-      <input type="submit" value="Post"/>
+      <input className="form-group" type="submit" value="Post"/>
     </form>
   )
 }

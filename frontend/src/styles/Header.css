@@ -1,0 +1,13 @@
+.carbon-header {
+    height: 10%;
+    background-color: #d8aa2be5;
+    border-width: 2px;
+    border-bottom-style: solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header-logo {
+    color: rgb(0, 0, 0);
+}

@@ -4,6 +4,8 @@ import axios from "axios";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
 
+import "../styles/Post.css";
+
 function Post({currUser}){
 
     const {id} = useParams()
@@ -27,11 +29,10 @@ function Post({currUser}){
     return (
       <div>
         {(postData && currUser) ? (
-          <div>
-            <div>I'm a post. my Id is {id}</div>
-            <div>{postData.title}</div>
-            <div>{postData.content}</div>
-            <div>{postData.author}</div>
+          <div className="post-container">
+            <div className="item title">Title: {postData.title}</div>
+            <div className="item author">Author: {postData.author}</div>
+            <div className="item content">{postData.content}</div>
             <CommentForm postID={id} author={currUser.name}/>
             <CommentList postID={id}/>
           </div>
@@ -43,10 +44,5 @@ function Post({currUser}){
 
     )
 }
-
-{/* <div>{id}</div>
-<div>{postData.title}</div>
-<div>{postData.content}</div>
-<div>[create new comment]</div>       */}
 
 export default Post;

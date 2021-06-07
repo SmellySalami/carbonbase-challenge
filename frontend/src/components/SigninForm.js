@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+import "../styles/Form.css";
+
 function SigninForm(props) {
 
   const [details, setDetails] = useState(()=>{return {email:"", password:""}});
@@ -31,9 +33,9 @@ function SigninForm(props) {
   }
 
   return (
-    <form className="signin-form" onSubmit={submitHandler}>
-      <h2>Login</h2>
-      <div className="error">{error}</div>
+    <form className="nice-form" onSubmit={submitHandler}>
+      <div class="form-group">Sign In</div>
+      <div className="form-group">{error}</div>
       <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input type="email" name="email" id="signup-email"
@@ -48,7 +50,7 @@ function SigninForm(props) {
           value={details.password}
         />
       </div>
-      <input type="submit" value="signin"/>
+      <input className="form-group" type="submit" value="signin"/>
     </form>
   )
 }
