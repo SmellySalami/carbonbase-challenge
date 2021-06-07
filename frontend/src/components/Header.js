@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -6,17 +5,14 @@ import { useHistory } from "react-router-dom";
 import '../styles/Header.css';
 
 function Header(props) {
-
   const history = useHistory()
 
+  // send signout request to backend
   async function signOut() {
-
     try {
       const res = await axios.post("http://localhost:3001/auth/signout", props.currUser, {
         headers: {'Content-Type': 'application/json'},
       });
-      // console.log("signing out");
-      console.log(res);
       props.setCurrUser(null);
       history.push("/");
             

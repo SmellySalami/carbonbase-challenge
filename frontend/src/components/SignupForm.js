@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -7,24 +7,18 @@ import "../styles/Form.css";
 function SignupForm(props) {
 
   const history = useHistory();
-
   const [details, setDetails] = useState(()=>{return {name:"", email:"", password:"", invite:""}});
   const [error, setError] = useState(()=>{return ""})
 
+  // Send signup req to backend
   async function submitHandler(e){
     e.preventDefault();
-
-    // Check fields are present
-    console.log(details);
-    // make axios call, TO make new account
     try {
       const res = await axios.post("http://localhost:3001/auth/signup", details, {
         headers: {'Content-Type': 'application/json'},
       });
       setError("");
       props.setCurrUser(res.data)
-      console.log(res)
-          // on success
       history.push('/');
     } catch (error) {
       console.log(error.response)

@@ -7,17 +7,14 @@ function CommentForm ({postID, author}){
 
   const [commentState, setCommentState] = useState(()=>{return {content:""}});
 
+  // send request to make 
   async function submitHandler(e){
     e.preventDefault();
-
-    console.log(commentState);
     let json = {postID: postID, content:commentState.content, author:author}
-  
     try {
       const res = await axios.post("http://localhost:3001/comment", json, {
         headers: {'Content-Type': 'application/json'},
       });
-      console.log("comment respose",res);
       setCommentState(res.data)
     } catch (error) {
       console.log(error.response)

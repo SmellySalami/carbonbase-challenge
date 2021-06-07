@@ -7,20 +7,16 @@ import CommentList from "./CommentList";
 import "../styles/Post.css";
 
 function Post({currUser}){
-
     const {id} = useParams()
     const [postData, setPostData] = useState(()=>{
       return null
     })
 
-    // basically on load
+    // onload, get the post info
     useEffect(() => {
       const fetchData = (async () => {
-        console.log(id);
         const res = await axios.get(`http://localhost:3001/post/${id}`);
-        console.log(res)
         setPostData(res.data);
-        console.log(postData)
       });
 
       fetchData();
@@ -40,8 +36,6 @@ function Post({currUser}){
           <div>Loading full post. Login while you wait</div>
         )}
       </div>
-
-
     )
 }
 

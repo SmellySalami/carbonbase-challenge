@@ -7,8 +7,7 @@ router.get("/test", (req, res) => {
 
 router.post("/", async (req, res) => {
     const {title, author, content} = req.body
-    console.log(title, author, content);
-
+    
     const newPost = new Post({
         title,
         author,
@@ -24,7 +23,6 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-    // console.log(req.session)
     const posts = await Post.find();
     res.json(posts);
 })

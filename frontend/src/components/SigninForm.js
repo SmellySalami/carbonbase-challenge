@@ -8,23 +8,17 @@ function SigninForm(props) {
 
   const [details, setDetails] = useState(()=>{return {email:"", password:""}});
   const [error, setError] = useState(()=>{return ""});
-
   const history = useHistory()
-  //on click, check succ, error, set user, redirect
+
+  //send signin req to backend
   async function submitHandler(e){
     e.preventDefault();
-
-    // Check fields are present
-    console.log(details);
-    // make axios call, TO make new account
     try {
       const res = await axios.post("http://localhost:3001/auth/signin", details, {
         headers: {'Content-Type': 'application/json'},
       });
       setError("");
       props.setCurrUser(res.data)
-      console.log(res)
-          // on success
       history.push('/');
     } catch (error) {
       console.log(error.response)

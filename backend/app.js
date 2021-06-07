@@ -25,7 +25,6 @@ app.use((req, res, next) =>{
     next();
 });
 
-
 // routes
 app.use("/post", require("./routes/postRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
