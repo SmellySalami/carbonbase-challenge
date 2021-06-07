@@ -30,6 +30,7 @@ app.use((req, res, next) =>{
 app.use("/post", require("./routes/postRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/comment", require("./routes/commentRoutes"));
+app.use("/stats", require("./routes/statRoutes"));
 
 // db connection
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser:true, useUnifiedTopology:true}, (err) =>{

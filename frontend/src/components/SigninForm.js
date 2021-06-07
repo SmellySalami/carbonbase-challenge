@@ -19,7 +19,7 @@ function SigninForm(props) {
       const res = await axios.post("http://localhost:3001/auth/signin", details, {
         headers: {'Content-Type': 'application/json'},
       });
-      // setError("");
+      setError("");
       props.setCurrUser(res.data)
       console.log(res)
           // on success
@@ -33,6 +33,7 @@ function SigninForm(props) {
   return (
     <form className="signin-form" onSubmit={submitHandler}>
       <h2>Login</h2>
+      <div className="error">{error}</div>
       <div className="form-group">
         <label htmlFor="email">Email:</label>
         <input type="email" name="email" id="signup-email"

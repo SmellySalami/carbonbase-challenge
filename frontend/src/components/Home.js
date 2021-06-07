@@ -1,7 +1,8 @@
 import React from "react"
 
-import PostForm from "./PostForm"
-import PostList from "./PostList"
+import PostForm from "./PostForm";
+import PostList from "./PostList";
+import Stats from "./Stats";
 
 function Home({currUser}){
 
@@ -10,10 +11,12 @@ function Home({currUser}){
   return(
     currUser ? (
       <div className="home">
-          <PostForm currUser={currUser}/>
-          <PostList />
-          <div>
-              <div>stats</div>
+          <div className="post-container">
+            <PostForm currUser={currUser}/>
+            <PostList />
+          </div>
+          <div className="side-bar">
+              <Stats/>
               <div>invite link (of the company)</div>
           </div>
       
