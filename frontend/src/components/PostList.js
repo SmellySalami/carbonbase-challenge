@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Post from "./Post"
+import PostFormItem from "./PostFormItem"
 
 function PostList(){
 
@@ -22,7 +22,7 @@ function PostList(){
   return(
     postList.map((post, i) => {
         return (
-          <Post key={'post-'+i} id={post._id} title={post.title}/>
+          <PostFormItem key={'post-'+i} id={post._id} title={post.title}/>
         )
     })
   )
