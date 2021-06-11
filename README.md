@@ -1,7 +1,7 @@
 # carbonbase-challenge
 
 ## instructions
-To test the program, clone and cd into the repo. Add the .env file attached in the email to the `backend` folder
+To test the program, clone and cd into the repo. Add the .env file attached in the email to the `backend` folder. Use invite link "a" when signing up for new account.
 
 Do this on two terminals.
 
